@@ -1,0 +1,37 @@
+{
+    "name": "node",
+    "version": "1.0.0",
+    "description": "runalyze-uploader",
+    "main": "dist/app.js",
+    "scripts": {
+        "test": "jest --no-cache  --detectOpenHandles --runInBand --forceExit",
+        "start": "tsc && NODE_NO_WARNINGS=1 node dist/app.js",
+        "start:debug": "tsc && node --inspect=0.0.0.0 --trace-warnings dist/app.js",
+        "format": "prettier --write \"src/**/*.ts\"",
+        "compile": "tsc",
+        "build": "tsc",
+        "develop": "tsc -w"
+    },
+    "author": "Alberto Ielpo",
+    "license": "ISC",
+    "devDependencies": {
+        "typescript": "~5.3.3",
+        "prettier": "~3.2.4",
+        "@types/jest": "~29.5.11",
+        "jest": "~29.7.0"
+    },
+    "dependencies": {
+        "dotenv": "~16.4.1",
+        "chalk": "~4.1.2"
+    },
+    "jest": {
+        "moduleFileExtensions": [
+            "js",
+            "json",
+            "ts"
+        ],
+        "rootDir": "src",
+        "testRegex": ".*\\.spec\\.ts$",
+        "testEnvironment": "node"
+    }
+}
