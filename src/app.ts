@@ -14,9 +14,13 @@ const buildFilesToUpload = async (srcLocation: string): Promise<string[]> => {
     const curStat = await stat(srcLocation);
     if (curStat.isDirectory()) {
         const files = await readdir(srcLocation);
-        return files.filter((x) =>
-            ["gpx", "tcx", "fit"].includes(x.substring(x.length - 3, x.length))
-        );
+        return files
+            .filter((x) =>
+                ["gpx", "tcx", "fit"].includes(
+                    x.substring(x.length - 3, x.length)
+                )
+            )
+            .map((x) => `${srcLocation}/${x}`);
     }
     return [srcLocation];
 };
