@@ -56,8 +56,12 @@ export class RunalyzeServiceProvider {
         headers.append("token", this.token);
         headers.append("Cookie", "lang=en");
 
+        const title =
+            process.env.RUNALYZE_ACTIVITY_NAME ??
+            new Date().getTime().toString();
+
         const formdata = new FormData();
-        formdata.append("title", "Indoor Cycling");
+        formdata.append("title", title);
         formdata.append("note", "");
         formdata.append("route", "");
         formdata.append("elevation_up_file", "");
