@@ -1,6 +1,6 @@
 {
-    "name": "node",
-    "version": "1.0.0",
+    "name": "runalyze-uploader",
+    "version": "1.0.1",
     "description": "runalyze-uploader",
     "main": "dist/app.js",
     "scripts": {

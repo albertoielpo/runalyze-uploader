@@ -18,10 +18,6 @@ export class RunalyzeServiceProvider {
         }
     }
 
-    private isSuccessStatus(status: number): boolean {
-        return status >= 200 && status <= 299;
-    }
-
     private initViaEnv() {
         this.token = process.env.RUNALYZE_PERSONAL_ACCESS_TOKEN ?? "";
         this.baseUrl = process.env.RUNALYZE_BASE_URL ?? "";
@@ -38,16 +34,17 @@ export class RunalyzeServiceProvider {
                 token: this.token
             }
         });
+
+        if (!res.ok) {
+            throw new Error(`Http status is ${res.status} 😞`);
+        }
+
         try {
             const text = await res.text();
             console.log(text);
         } catch (error) {
-            console.error("Fetch text failed");
+            console.error("Fetch text failed", error);
             throw new Error("Fetch text failed");
-        }
-
-        if (!this.isSuccessStatus(res.status)) {
-            throw new Error(`Http status is ${res.status} 😞`);
         }
     }
 
@@ -76,16 +73,16 @@ export class RunalyzeServiceProvider {
             redirect: "follow"
         });
 
+        if (!res.ok) {
+            throw new Error(`Http status is ${res.status} 😞`);
+        }
+
         try {
             const text = await res.text();
             console.log(text);
         } catch (error) {
-            console.error("Fetch text failed");
+            console.error("Fetch text failed", error);
             throw new Error("Fetch text failed");
-        }
-
-        if (!this.isSuccessStatus(res.status)) {
-            throw new Error(`Http status is ${res.status} 😞`);
         }
 
         console.log("Upload queued successfully 😄");
