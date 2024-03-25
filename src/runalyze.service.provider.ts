@@ -89,6 +89,6 @@ export class RunalyzeServiceProvider {
             throw new Error("Fetch text failed");
         }
 
-        console.log("Upload queued successfully 😄");
+        console.log("Upload queued successfully 👍");
     }
 }
